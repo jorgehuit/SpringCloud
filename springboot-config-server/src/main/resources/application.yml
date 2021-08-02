@@ -3,5 +3,8 @@ server:
 spring:
   application:
     name: config-server
-  cloud:    config:      server:        git:          uri: https://github.com/jorgehuit/server-config
-    
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/jorgehuit/server-config
