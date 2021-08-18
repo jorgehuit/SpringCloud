@@ -26,4 +26,5 @@ logging:
         SQL: debug   
 
 #SERVER CONF
-server:  port: ${PORT:0}
+server:
+  port: ${PORT:0} 
