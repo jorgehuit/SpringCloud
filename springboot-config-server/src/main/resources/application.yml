@@ -1,5 +1,4 @@
-server:
-  port: 8888
+#SPRING CONFIG
 spring:
   application:
     name: config-server
@@ -8,4 +7,7 @@ spring:
       server:
         git:
           uri: https://github.com/jorgehuit/server-config
-          
+
+#SERVER CONFIG
+server:
+  port: 8888          

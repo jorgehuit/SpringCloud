@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.formacion.models.entity.ProductoEntity;
+import springboot.servicio.commons.models.entity.ProductoEntity;
 import com.formacion.service.ProductoService;
 
 @RestController
@@ -41,10 +41,10 @@ public class ProductoController {
 		producto.setPort(Integer.parseInt(env.getProperty("local.server.port")));
 		
 		//Simular timeout
-		try {
-			Thread.sleep(3000L);
-		} catch (InterruptedException e) {
-		}
+//		try {
+//			Thread.sleep(3000L);
+//		} catch (InterruptedException e) {
+//		}
 	
 		return producto;
 	}

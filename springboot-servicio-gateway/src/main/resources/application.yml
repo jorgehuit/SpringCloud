@@ -1,0 +1,36 @@
+#SPRING CONFIG
+spring:
+  application:
+    name: server-gateway
+  cloud:    gateway:      routes:      - id: servicio-productos
+        uri: lb://servicio-productos
+        predicates:          - Path=/api/productos/**
+#          - Header=token, \d+
+#          - Header=Content-Type, application/json
+#          - Method=GET, POST
+#          - Query=pais
+#          - Cookie=color, rojo
+        filters:          - StripPrefix=2
+          - ProductFilter=Mensaje Personalizado, usuario, Huitzil
+      - id: servicio-item
+        uri: lb://servicio-item
+        predicates:
+          - Path=/api/items/**
+        filters:
+          - StripPrefix=2
+          - AddRequestHeader=token-request, 321654
+          - AddResponseHeader=X-token-response, 00214
+          - SetResponseHeader=Content-Type, application/json
+          - AddRequestParameter=nombre, Jorge
+
+#EUREKA CONFIG
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+      
+#SERVER CONFIG
+server:
+  port: 8091
+      
+      

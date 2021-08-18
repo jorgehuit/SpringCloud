@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.formacion.models.entity.ProductoEntity;
+import springboot.servicio.commons.models.entity.ProductoEntity;
 import com.formacion.models.repository.ProductoRepository;
 import com.formacion.service.ProductoService;
 

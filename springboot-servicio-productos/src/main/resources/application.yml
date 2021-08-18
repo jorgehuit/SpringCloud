@@ -1,15 +1,4 @@
-#CONF EUREKA
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-    
-#CONF SERVER  
-server:
-  port: ${PORT:0}
-  
+#SPRING CONFIG
 spring:
   application:
     name: servicio-productos
@@ -20,3 +9,15 @@ spring:
     username: sa
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+
+#UEREKA CONFIG
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    
+#SERVER CONFIG
+server:
+  port: ${PORT:0}

@@ -1,16 +1,15 @@
-#CONF EUREKA
+#SPRING CONFIG
+spring:
+  application:
+    name: zuul-server
+
+#EUREKA CONFIG
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
-server:
-  port: 8090
-  
-spring:
-  application:
-    name: zuul-server
-    
+#ZUUL CONFIG  
 zuul:
   routes:
     productos:
@@ -19,10 +18,13 @@ zuul:
     item:
       service-id: servicio-item
       path: /api/items/**
-      
+    usuarios:
+      service-id: servicio-usuarios
+      path: /api/admin/**
   host:
     connect-timeout-millis: 10000
-    
+  
+#HYSTRIX CONFIG
 hystrix:
   command:
     default:
@@ -31,6 +33,12 @@ hystrix:
           strategy: THREAD
           thread:
             timeoutInMilliseconds: 15000
+
+#RIBBON CONFIG
 ribbon:
   ConnectTimeout: 6000
   ReadTimeout: 6000
+  
+#SERVER CONFIG
+server:
+  port: 8090

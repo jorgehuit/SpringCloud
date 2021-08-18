@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.formacion.item.models.Item;
-import com.formacion.item.models.Producto;
+import springboot.servicio.commons.models.entity.ProductoEntity;
 import com.formacion.item.service.ItemService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,8 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<Item> findAll() {
-        List<Producto> productos = 
-            Arrays.asList(clienteRest.getForObject("http://localhost:8001/listar", Producto[].class));
+        List<ProductoEntity> productos = 
+            Arrays.asList(clienteRest.getForObject("http://localhost:8001/listar", ProductoEntity[].class));
 
         return productos.stream().map(p -> new Item(p, 1)).collect(Collectors.toList());
     }
@@ -32,7 +32,7 @@ public class ItemServiceImpl implements ItemService {
     public Item findById(Long id, Integer cantidad) {
         Map<String, Long> pathVariables = new HashMap<>();
         pathVariables.put("id", id);
-        Producto producto = clienteRest.getForObject("http://localhost:8001/ver/{id}", Producto.class, pathVariables);
+        ProductoEntity producto = clienteRest.getForObject("http://localhost:8001/ver/{id}", ProductoEntity.class, pathVariables);
         return new Item(producto, cantidad);
     }
     
