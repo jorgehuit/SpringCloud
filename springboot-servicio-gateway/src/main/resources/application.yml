@@ -2,15 +2,20 @@
 spring:
   application:
     name: server-gateway
-  cloud:    gateway:      routes:      - id: servicio-productos
+  cloud:
+    gateway:
+      routes:
+      - id: servicio-productos
         uri: lb://servicio-productos
-        predicates:          - Path=/api/productos/**
+        predicates:
+          - Path=/api/productos/**
 #          - Header=token, \d+
 #          - Header=Content-Type, application/json
 #          - Method=GET, POST
 #          - Query=pais
 #          - Cookie=color, rojo
-        filters:          - StripPrefix=2
+        filters:
+          - StripPrefix=2
           - ProductFilter=Mensaje Personalizado, usuario, Huitzil
       - id: servicio-item
         uri: lb://servicio-item
@@ -32,5 +37,3 @@ eureka:
 #SERVER CONFIG
 server:
   port: 8091
-      
-      
